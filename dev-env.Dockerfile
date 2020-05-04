@@ -18,17 +18,17 @@ RUN \
   wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | apt-key add - && \
   apt-add-repository 'deb https://apt.kitware.com/ubuntu/ bionic main' && \
   apt-get update && \
-  apt-get install -y gnuradio libgmp-dev && \
+  apt-get install -y gnuradio gr-osmosdr libgmp-dev && \
   apt-get install -y libhackrf-dev libuhd-dev && \
   apt-get install -y git cmake build-essential libboost-all-dev libusb-1.0-0.dev libssl-dev && \
   rm -rf /var/lib/apt/lists/*
-RUN git clone https://github.com/osmocom/gr-osmosdr/tree/gr3.8 
-COPY 99gnuradio-release /etc/apt/preferences.d/
-RUN    cd gr-osmosdr && \
-    mkdir build && cd build && cmake ../ && make && make install 
-RUN ln -s /usr/lib/x86_64-linux-gnu/liborc-0.4.so.0.28.0 /usr/lib/x86_64-linux-gnu/liborc-0.4.so 
-RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
-    locale-gen
+#RUN git clone https://github.com/osmocom/gr-osmosdr.git
+#COPY 99gnuradio-release /etc/apt/preferences.d/
+#RUN    cd gr-osmosdr && \
+#    mkdir build && cd build && cmake ../ && make && make install 
+#RUN ln -s /usr/lib/x86_64-linux-gnu/liborc-0.4.so.0.28.0 /usr/lib/x86_64-linux-gnu/liborc-0.4.so 
+#RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+#    locale-gen
 ENV LANG en_US.UTF-8  
 ENV LANGUAGE en_US:en  
 ENV LC_ALL en_US.UTF-8  
