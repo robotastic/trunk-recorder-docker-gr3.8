@@ -1,0 +1,9 @@
+version: "3"
+services:
+  dev-env:
+    build: 
+        context: .
+        dockerfile: dev-env.Dockerfile
+    container_name: dev-env
+    volumes:
+      - ./:/home/app

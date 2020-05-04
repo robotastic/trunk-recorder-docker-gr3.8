@@ -1,0 +1,3 @@
+Package: gnuradio
+Pin: release o=LP-PPA-gnuradio-gnuradio-releases
+Pin-Priority: 900
